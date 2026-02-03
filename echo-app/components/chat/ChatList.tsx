@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import ThemeToggle from '@/components/ThemeToggle'
 import { OnlineIndicator } from '@/components/ui'
-import type { Profile, Conversation, Channel, ChannelConversation } from '@/types'
+import type { Profile, Conversation, Channel, ChannelConversation, ChannelRole } from '@/types'
 import { formatMessageTime, getAvatarUrl, truncateText } from '@/lib/utils'
 import { cleanupPresence } from '@/hooks'
 
@@ -176,7 +176,7 @@ export default function ChatList({
           channel: d.channel as Channel,
           last_message: null,
           unread_count: 0,
-          my_role: d.role,
+          my_role: d.role as ChannelRole,
         }))
       setChannels(channelConvs)
     }
